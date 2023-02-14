@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D9ADA487299AD6D900DC0FD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA486299AD6D900DC0FD3 /* AppDelegate.swift */; };
 		D9ADA489299AD6D900DC0FD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA488299AD6D900DC0FD3 /* SceneDelegate.swift */; };
-		D9ADA48B299AD6D900DC0FD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA48A299AD6D900DC0FD3 /* ViewController.swift */; };
+		D9ADA48B299AD6D900DC0FD3 /* ProductListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA48A299AD6D900DC0FD3 /* ProductListVC.swift */; };
 		D9ADA48E299AD6D900DC0FD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9ADA48C299AD6D900DC0FD3 /* Main.storyboard */; };
 		D9ADA490299AD6DC00DC0FD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9ADA48F299AD6DC00DC0FD3 /* Assets.xcassets */; };
 		D9ADA493299AD6DC00DC0FD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9ADA491299AD6DC00DC0FD3 /* LaunchScreen.storyboard */; };
@@ -17,32 +17,32 @@
 		D9ADA49E299ADAD400DC0FD3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D9ADA49D299ADAD400DC0FD3 /* FirebaseAnalytics */; };
 		D9ADA4A0299ADAD400DC0FD3 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D9ADA49F299ADAD400DC0FD3 /* FirebaseDatabase */; };
 		D9ADA4A2299ADAD400DC0FD3 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D9ADA4A1299ADAD400DC0FD3 /* FirebaseDatabaseSwift */; };
-		D9ADA4B1299B7CBF00DC0FD3 /* ProductListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4B0299B7CBF00DC0FD3 /* ProductListVC.swift */; };
 		D9ADA4B3299B7CCF00DC0FD3 /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4B2299B7CCF00DC0FD3 /* ProductListViewModel.swift */; };
 		D9ADA4B5299B7CDD00DC0FD3 /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4B4299B7CDD00DC0FD3 /* ProductDetailVC.swift */; };
 		D9ADA4B7299B7CEB00DC0FD3 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4B6299B7CEB00DC0FD3 /* ProductDetailViewModel.swift */; };
 		D9ADA4B9299B7CF700DC0FD3 /* BasketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4B8299B7CF700DC0FD3 /* BasketVC.swift */; };
 		D9ADA4BB299B7D0500DC0FD3 /* BasketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4BA299B7D0500DC0FD3 /* BasketViewModel.swift */; };
 		D9ADA4BE299BCAFB00DC0FD3 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4BD299BCAFB00DC0FD3 /* ProductModel.swift */; };
+		D9ADA4C0299BEF4400DC0FD3 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4BF299BEF4400DC0FD3 /* Navigator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D9ADA483299AD6D900DC0FD3 /* firebaseRealtimeDBExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = firebaseRealtimeDBExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9ADA486299AD6D900DC0FD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9ADA488299AD6D900DC0FD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D9ADA48A299AD6D900DC0FD3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D9ADA48A299AD6D900DC0FD3 /* ProductListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListVC.swift; sourceTree = "<group>"; };
 		D9ADA48D299AD6D900DC0FD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D9ADA48F299AD6DC00DC0FD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9ADA492299AD6DC00DC0FD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9ADA494299AD6DC00DC0FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9ADA49A299AD9C200DC0FD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D9ADA4B0299B7CBF00DC0FD3 /* ProductListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListVC.swift; sourceTree = "<group>"; };
 		D9ADA4B2299B7CCF00DC0FD3 /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModel.swift; sourceTree = "<group>"; };
 		D9ADA4B4299B7CDD00DC0FD3 /* ProductDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVC.swift; sourceTree = "<group>"; };
 		D9ADA4B6299B7CEB00DC0FD3 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 		D9ADA4B8299B7CF700DC0FD3 /* BasketVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketVC.swift; sourceTree = "<group>"; };
 		D9ADA4BA299B7D0500DC0FD3 /* BasketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewModel.swift; sourceTree = "<group>"; };
 		D9ADA4BD299BCAFB00DC0FD3 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		D9ADA4BF299BEF4400DC0FD3 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +81,7 @@
 				D9ADA4A3299AF1EC00DC0FD3 /* Application */,
 				D9ADA4AF299B7CA000DC0FD3 /* Models */,
 				D9ADA4A4299AF1FD00DC0FD3 /* Scenes */,
-				D9ADA4A5299AF21800DC0FD3 /* Constants */,
-				D9ADA48A299AD6D900DC0FD3 /* ViewController.swift */,
+				D9ADA4A5299AF21800DC0FD3 /* Common */,
 				D9ADA48C299AD6D900DC0FD3 /* Main.storyboard */,
 				D9ADA491299AD6DC00DC0FD3 /* LaunchScreen.storyboard */,
 				D9ADA494299AD6DC00DC0FD3 /* Info.plist */,
@@ -111,17 +110,18 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		D9ADA4A5299AF21800DC0FD3 /* Constants */ = {
+		D9ADA4A5299AF21800DC0FD3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D9ADA4BF299BEF4400DC0FD3 /* Navigator.swift */,
 			);
-			path = Constants;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		D9ADA4A7299AF23700DC0FD3 /* ProductList */ = {
 			isa = PBXGroup;
 			children = (
-				D9ADA4B0299B7CBF00DC0FD3 /* ProductListVC.swift */,
+				D9ADA48A299AD6D900DC0FD3 /* ProductListVC.swift */,
 				D9ADA4B2299B7CCF00DC0FD3 /* ProductListViewModel.swift */,
 				D9ADA4BC299B7D1400DC0FD3 /* Cell */,
 			);
@@ -241,13 +241,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9ADA4B1299B7CBF00DC0FD3 /* ProductListVC.swift in Sources */,
 				D9ADA4B5299B7CDD00DC0FD3 /* ProductDetailVC.swift in Sources */,
 				D9ADA4B3299B7CCF00DC0FD3 /* ProductListViewModel.swift in Sources */,
 				D9ADA4B7299B7CEB00DC0FD3 /* ProductDetailViewModel.swift in Sources */,
 				D9ADA4BB299B7D0500DC0FD3 /* BasketViewModel.swift in Sources */,
+				D9ADA4C0299BEF4400DC0FD3 /* Navigator.swift in Sources */,
 				D9ADA4B9299B7CF700DC0FD3 /* BasketVC.swift in Sources */,
-				D9ADA48B299AD6D900DC0FD3 /* ViewController.swift in Sources */,
+				D9ADA48B299AD6D900DC0FD3 /* ProductListVC.swift in Sources */,
 				D9ADA487299AD6D900DC0FD3 /* AppDelegate.swift in Sources */,
 				D9ADA489299AD6D900DC0FD3 /* SceneDelegate.swift in Sources */,
 				D9ADA4BE299BCAFB00DC0FD3 /* ProductModel.swift in Sources */,
