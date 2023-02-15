@@ -8,18 +8,14 @@
 import Foundation
 import UIKit
 
-class Navigator {
-    weak var navigationController: UINavigationController?
-    
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
+class Navigator: UINavigationController {
+    var navController: UINavigationController?
     
     func navigateTo(_ viewController: UIViewController, animated: Bool) {
-        navigationController?.pushViewController(viewController, animated: animated)
+        navController?.pushViewController(viewController, animated: animated)
     }
     
     func back(animated: Bool) {
-        navigationController?.popViewController(animated: animated)
+        navController?.popViewController(animated: animated)
     }
 }

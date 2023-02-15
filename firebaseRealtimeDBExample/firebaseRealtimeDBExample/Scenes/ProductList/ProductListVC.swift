@@ -12,7 +12,7 @@ import UIKit
 class ProductListVC: UIViewController {
     let database = Database.database().reference()
     let databaseRef = Database.database().reference(withPath: "products")
-    let navigator = Navigator(navigationController: UINavigationController())
+    let navigator = Navigator()
 
     var collectionView: UICollectionView!
     var data: [Product] = []
@@ -23,18 +23,33 @@ class ProductListVC: UIViewController {
         super.viewDidLoad()
         collectionViewDesign()
         fetchObjects()
-        
+        navigator.navController = navigationController!
         let basketButton = UIButton(type: .system)
         basketButton.imageView?.image = UIImage(named: "basketImage")
         basketButton.addTarget(self, action: #selector(basketButtonTapped), for: .touchUpInside)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigator.setNavigationBarHidden(true, animated: false)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 0 {
+//            navigationController?.navigationBar.isHidden = true
+            navigationController?.navigationBar.backgroundColor = .white
+        } else {
+//            navigationController?.navigationBar.isHidden = true
+            navigationController?.navigationBar.backgroundColor = .white
+        }
+    }
+    
     @objc func addToBasketButtonTapped(_ sender: UIButton) {
         print("basildi")
-
+        
         if let indexPath = collectionView.indexPath(for: sender.superview?.superview as! UICollectionViewCell) {
             let product = data[indexPath.row]
-
+            
             var addedProducts = UserDefaults.standard.array(forKey: "basket") as? [[String: Any]] ?? []
             
             // Yeni ürünü sepete ekleyin
@@ -50,13 +65,14 @@ class ProductListVC: UIViewController {
     }
     
     @objc func basketButtonTapped() {
-        
-        }
+        let basketVC = BasketVC()
+        navigator.navigateTo(basketVC, animated: true)
+    }
     
     func collectionViewDesign() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.sectionInset = UIEdgeInsets(top: spacing + 44, left: spacing, bottom: spacing, right: spacing)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
        
@@ -64,13 +80,25 @@ class ProductListVC: UIViewController {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.dataSource = self
         collectionView.delegate = self
-        
         view.addSubview(collectionView)
+        collectionView.register(ProductListCVCell.self, forCellWithReuseIdentifier: "ProductListCVCell")
+
         
-//        let logoView = UIImageView(frame: CGRect(x: 0, y: 50, width: 335, height: 35))
-//        let image = UIImage(named: "pazaramaLogo")
-//        logoView.image = image
-//        view.addSubview(logoView)
+        let navBarView = UIView(frame: CGRect(x: 0, y: 84, width: self.view.frame.width, height: 54))
+        navBarView.backgroundColor = .white
+        view.addSubview(navBarView)
+
+        let logoView = UIImageView()
+        logoView.image = UIImage(named: "pazaramaLogo")
+        logoView.backgroundColor = .white
+        logoView.frame = CGRect(x: 13, y: 10, width: self.view.frame.width - 200, height: 40)
+        navBarView.addSubview(logoView)
+        
+        let basketButton = UIButton(frame: CGRect(x: self.view.frame.width - 50, y: 10, width: 40, height: 40))
+        basketButton.setImage(UIImage(named: "basketImage"), for: .normal)
+        basketButton.backgroundColor = .white
+        basketButton.addTarget(self, action: #selector(basketButtonTapped), for: .touchUpInside)
+        navBarView.addSubview(basketButton)
     }
     
     func fetchObjects() {
@@ -101,55 +129,16 @@ extension ProductListVC: UICollectionViewDelegateFlowLayout, UICollectionViewDat
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductListCVCell", for: indexPath) as! ProductListCVCell
         cell.backgroundColor = .white
         cell.layer.cornerRadius = 6
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor(named: "borderColor")?.cgColor
+        cell.addToBasketButton.addTarget(self, action: #selector(addToBasketButtonTapped(_:)), for: .touchUpInside)
         
-        // productImage
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.contentView.bounds.width - 1, height: 250))
-        imageView.layer.cornerRadius = 6
-        imageView.contentMode = .scaleAspectFit
-        cell.contentView.addSubview(imageView)
-
-        let url = URL(string: data[indexPath.row].productImage)
-        DispatchQueue.global().async {
-            if let data = try? Data(contentsOf: url!) {
-                DispatchQueue.main.async {
-                    imageView.image = UIImage(data: data)
-                }
-            }
-        }
-
-        // productName
-        let nameLabel = UILabel(frame: CGRect(x: 0, y: 256, width: cell.contentView.bounds.width, height: 20))
-        nameLabel.textAlignment = .center
-        nameLabel.font = UIFont.boldSystemFont(ofSize: 12)
-        nameLabel.text = data[indexPath.row].productName
-        cell.contentView.addSubview(nameLabel)
-
-        // productPrice
-        let priceLabel = UILabel(frame: CGRect(x: 10, y: 277, width: cell.contentView.bounds.width, height: 20))
-        priceLabel.textAlignment = .center
-        priceLabel.font = UIFont.boldSystemFont(ofSize: 12)
-        priceLabel.textColor = .black
-        priceLabel.text = "\(data[indexPath.row].productPrice) TL"
-        cell.contentView.addSubview(priceLabel)
+        let currentData = data[indexPath.row]
+        cell.configure(withData: currentData)
         
-       // addToBasketButton SAGDAN SOLDAN BOSLUK VER
-        let addToBasketButton = UIButton(type: .system)
-        addToBasketButton.setTitle("Sepete Ekle", for: .normal)
-        addToBasketButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
-        addToBasketButton.setTitleColor(.white, for: .normal)
-        addToBasketButton.frame = CGRect(x: 0, y: 300 , width:  cell.contentView.bounds.width, height: 40)
-        addToBasketButton.configuration?.contentInsets.trailing = 20
-        addToBasketButton.configuration?.contentInsets.leading = 20
-        addToBasketButton.backgroundColor = UIColor(named: "pazaramaPink")
-        addToBasketButton.layer.cornerRadius = 6
-        addToBasketButton.addTarget(self, action: #selector(addToBasketButtonTapped(_:)), for: .touchUpInside)
-        cell.contentView.addSubview(addToBasketButton)
-
         return cell
     }
 

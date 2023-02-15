@@ -22,8 +22,8 @@ class ProductDetailVC: UIViewController {
     
     override func viewDidLoad() {
         // View oluşturma
-        let customView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100))
-        customView.backgroundColor = .red
+        let customView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        customView.backgroundColor = .white
         
         // View ekleme
         view.addSubview(customView)
