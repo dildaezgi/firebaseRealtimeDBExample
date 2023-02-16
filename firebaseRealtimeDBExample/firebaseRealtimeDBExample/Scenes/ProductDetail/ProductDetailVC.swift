@@ -10,10 +10,10 @@ import UIKit
 class ProductDetailVC: UIViewController {
     let product: Product
     var productNameLabel = UILabel()
-    var productImage: UIImageView!
+    var productImage1 = UIImageView()
+    var productImage2 = UIImageView()
     var priceLabel = UILabel()
     var descriptionLabel = UILabel()
-    var imageViews = [UIImageView]()
     var titleLabel = UILabel()
 
     init(product: Product) {
@@ -27,7 +27,7 @@ class ProductDetailVC: UIViewController {
     
     override func viewDidLoad() {
         let customView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
-        customView.backgroundColor = .white
+        customView.backgroundColor = .lightGray
         view.addSubview(customView)
         
         navigationController?.navigationBar.backgroundColor = .white
@@ -35,12 +35,22 @@ class ProductDetailVC: UIViewController {
         setupScrollView()
         setupPageControl()
 
+        if let imageURL1 = product.productImages.image1, let stringURL1 = URL(string: imageURL1) {
+            productImage1.load(url: stringURL1)
+        }
+        
+        if let imageURL2 = product.productImages.image1, let stringURL2 = URL(string: imageURL2) {
+            productImage2.load(url: stringURL2)
+        }
+        
+//        productImage1.frame = CGRect(x: 0, y: 44, width: self.view.frame.width, height: 385)
+
         productNameLabel.text = product.productName
         productNameLabel.textColor = .black
         productNameLabel.font = .systemFont(ofSize: 20)
         productNameLabel.sizeToFit()
         productNameLabel.numberOfLines = 0
-        productNameLabel.frame = CGRect(x: 16, y: 100, width: self.view.frame.width - 100, height: 30)
+        productNameLabel.frame = CGRect(x: 16, y: 485, width: self.view.frame.width - 16, height: 60)
         view.addSubview(productNameLabel)
         
         titleLabel.text = "Ürün Açıklaması"
@@ -48,7 +58,7 @@ class ProductDetailVC: UIViewController {
         titleLabel.font = .systemFont(ofSize: 13)
         titleLabel.sizeToFit()
         titleLabel.numberOfLines = 0
-        titleLabel.frame = CGRect(x: 16, y: 150, width: self.view.frame.width - 100, height: 30)
+        titleLabel.frame = CGRect(x: 16, y: 535, width: self.view.frame.width - 16, height: 60)
         view.addSubview(titleLabel)
         
         descriptionLabel.text = "Ürünlerimizin çevre etkisini azaltmaya yardımcı olan teknolojiler ve ham maddeler kullanılarak imal edilen kıyafetleri Join Life olarak etiketlendiriyoruz..."
@@ -56,7 +66,7 @@ class ProductDetailVC: UIViewController {
         descriptionLabel.font = .systemFont(ofSize: 12)
         descriptionLabel.sizeToFit()
         descriptionLabel.numberOfLines = 0
-        descriptionLabel.frame = CGRect(x: 16, y: 200, width: self.view.frame.width - 100, height: 30)
+        descriptionLabel.frame = CGRect(x: 16, y: 585, width: self.view.frame.width - 16, height: 60)
         view.addSubview(descriptionLabel)
         
         // Sabit view'i oluşturma

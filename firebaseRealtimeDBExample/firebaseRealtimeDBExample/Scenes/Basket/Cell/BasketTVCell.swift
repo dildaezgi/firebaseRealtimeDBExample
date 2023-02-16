@@ -23,7 +23,6 @@ class BasketTVCell: UITableViewCell {
     }
     
     func setupViews() {
-
         productImageView.contentMode = .scaleAspectFit
         contentView.addSubview(productImageView)
         
@@ -33,10 +32,10 @@ class BasketTVCell: UITableViewCell {
         priceLabel.font = UIFont.systemFont(ofSize: 12)
         contentView.addSubview(priceLabel)
         
-
         productImageView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.numberOfLines = 0
         
         NSLayoutConstraint.activate([
             productImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),

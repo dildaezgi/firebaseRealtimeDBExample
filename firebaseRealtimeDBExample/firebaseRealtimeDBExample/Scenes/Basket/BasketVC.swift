@@ -38,9 +38,14 @@ extension BasketVC: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BasketTVCell", for: indexPath) as! BasketTVCell
         
         let product = addedProducts[indexPath.row]
-        cell.productImageView.image = UIImage(named: product["image1"] as! String) //sepette tek imageli urunler var bu yuzden ilk image alip ilerleyemiyor. yeni haliyle tum sepeti bosalt ve sonra devam et
-        cell.textLabel?.text = product["name"] as? String
-        cell.detailTextLabel?.text = "\(product["price"] as? Double ?? 0.0) TL"
+        if let imageURL = product["image"] as? String, let stringURL = URL(string: imageURL) {
+            cell.productImageView.load(url: stringURL)
+        } else {
+            //no image from local
+        }
+        
+        cell.nameLabel.text = product["name"] as? String
+        cell.priceLabel.text = "\(product["price"] as? Double ?? 0.0) TL"
         
         //urun silme ve sepeti tamamen bosaltma butonlari olacak
         return cell
@@ -49,5 +54,5 @@ extension BasketVC: UITableViewDataSource, UITableViewDelegate {
     
    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return 100
-     }
+    }
 }

@@ -9,13 +9,14 @@ import FirebaseDatabase
 import Firebase
 import UIKit
 
-class ProductListVC: UIViewController {
+class ProductListVC: UIViewController, UISearchBarDelegate {
     let database = Database.database().reference()
     let databaseRef = Database.database().reference(withPath: "products")
     let navigator = Navigator()
 
     var collectionView: UICollectionView!
     var data: [Product] = []
+    var filteredItems: [Product] = []
     
     private let spacing : CGFloat = 15.0
 
@@ -52,11 +53,11 @@ class ProductListVC: UIViewController {
             
             var addedProducts = UserDefaults.standard.array(forKey: "basket") as? [[String: Any]] ?? []
             
-            // Yeni ürünü sepete ekleyin
+            // Yeni ürünü sepete ekle
             let newProduct = ["productID": product.productID, "name": product.productName, "price": product.productPrice, "rate": product.productRate, "image": product.productImages.image1 ?? ""] as [String : Any]
             addedProducts.append(newProduct)
             
-            // Sepete eklenen ürünleri güncelleyin
+            // Sepete eklenen ürünleri güncelle
             UserDefaults.standard.set(addedProducts, forKey: "basket")
             
             let basketVC = BasketVC()
@@ -72,7 +73,7 @@ class ProductListVC: UIViewController {
     func collectionViewDesign() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: spacing + 44, left: spacing, bottom: spacing, right: spacing)
+        layout.sectionInset = UIEdgeInsets(top: spacing + 75, left: spacing, bottom: spacing, right: spacing)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
        
@@ -83,7 +84,6 @@ class ProductListVC: UIViewController {
         view.addSubview(collectionView)
         collectionView.register(ProductListCVCell.self, forCellWithReuseIdentifier: "ProductListCVCell")
 
-        
         let navBarView = UIView(frame: CGRect(x: 0, y: 84, width: self.view.frame.width, height: 54))
         navBarView.backgroundColor = .white
         view.addSubview(navBarView)
@@ -99,6 +99,18 @@ class ProductListVC: UIViewController {
         basketButton.backgroundColor = .white
         basketButton.addTarget(self, action: #selector(basketButtonTapped), for: .touchUpInside)
         navBarView.addSubview(basketButton)
+        
+        let searchBar = UISearchBar()
+        searchBar.searchBarStyle = .minimal
+        searchBar.delegate = self
+        searchBar.placeholder = "Ara"
+        searchBar.showsCancelButton = false
+        view.addSubview(searchBar)
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        searchBar.topAnchor.constraint(equalTo: navBarView.bottomAnchor).isActive = true
+        searchBar.heightAnchor.constraint(equalToConstant: 44).isActive = true 
     }
     
     func fetchObjects() {
@@ -120,14 +132,34 @@ class ProductListVC: UIViewController {
                     self.data.append(product)
                 }
             }
+            self.filteredItems = self.data // Filtrelenmiş öğeler için data dizisini kullanın
             self.collectionView.reloadData()
         }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredItems = []
+        if searchText == "" {
+            filteredItems = data // Arama yapılmadığında tüm öğeleri gösterir
+        } else {
+            for item in data {
+                if item.productName.lowercased().contains(searchText.lowercased()) {
+                    filteredItems.append(item)
+                }
+            }
+        }
+        collectionView.reloadData() // Filtrelenmiş öğeleri görüntüle
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.showsCancelButton = false
+        return true
     }
 }
 
 extension ProductListVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return filteredItems.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -138,7 +170,7 @@ extension ProductListVC: UICollectionViewDelegateFlowLayout, UICollectionViewDat
         cell.layer.borderColor = UIColor(named: "borderColor")?.cgColor
         cell.addToBasketButton.addTarget(self, action: #selector(addToBasketButtonTapped(_:)), for: .touchUpInside)
         
-        let currentData = data[indexPath.row]
+        let currentData = filteredItems[indexPath.row]
         cell.configure(withData: currentData)
         
         return cell

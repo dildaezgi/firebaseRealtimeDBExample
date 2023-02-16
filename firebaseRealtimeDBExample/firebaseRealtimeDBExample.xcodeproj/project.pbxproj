@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D99C37EC299ECE3A00CC7544 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C37EB299ECE3A00CC7544 /* UIImageViewExtension.swift */; };
 		D9ADA487299AD6D900DC0FD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA486299AD6D900DC0FD3 /* AppDelegate.swift */; };
 		D9ADA489299AD6D900DC0FD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA488299AD6D900DC0FD3 /* SceneDelegate.swift */; };
 		D9ADA48B299AD6D900DC0FD3 /* ProductListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA48A299AD6D900DC0FD3 /* ProductListVC.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D99C37EB299ECE3A00CC7544 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		D9ADA483299AD6D900DC0FD3 /* firebaseRealtimeDBExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = firebaseRealtimeDBExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9ADA486299AD6D900DC0FD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9ADA488299AD6D900DC0FD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				D9ADA4BF299BEF4400DC0FD3 /* Navigator.swift */,
+				D99C37EB299ECE3A00CC7544 /* UIImageViewExtension.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				D9ADA487299AD6D900DC0FD3 /* AppDelegate.swift in Sources */,
 				D9ADA489299AD6D900DC0FD3 /* SceneDelegate.swift in Sources */,
 				D9ADA4C2299D15AB00DC0FD3 /* ProductListCVCell.swift in Sources */,
+				D99C37EC299ECE3A00CC7544 /* UIImageViewExtension.swift in Sources */,
 				D9ADA4BE299BCAFB00DC0FD3 /* ProductModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
