@@ -32,17 +32,16 @@ class ProductListVC: UIViewController, UISearchBarDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigator.setNavigationBarHidden(true, animated: false)
+        navigationController?.navigationBar.backgroundColor = .white
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > 0 {
-//            navigationController?.navigationBar.isHidden = true
-            navigationController?.navigationBar.backgroundColor = .white
-        } else {
-//            navigationController?.navigationBar.isHidden = true
-            navigationController?.navigationBar.backgroundColor = .white
+                        navigationController?.navigationBar.isHidden = false
+                        navigationController?.navigationBar.backgroundColor = .white
+                        navigationController?.navigationBar.isOpaque = false
         }
+
     }
     
     @objc func addToBasketButtonTapped(_ sender: UIButton) {
@@ -101,7 +100,6 @@ class ProductListVC: UIViewController, UISearchBarDelegate {
         navBarView.addSubview(basketButton)
         
         let searchBar = UISearchBar()
-        searchBar.searchBarStyle = .minimal
         searchBar.delegate = self
         searchBar.placeholder = "Ara"
         searchBar.showsCancelButton = false

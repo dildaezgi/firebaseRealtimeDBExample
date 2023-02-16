@@ -27,7 +27,7 @@ class ProductDetailVC: UIViewController {
     
     override func viewDidLoad() {
         let customView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
-        customView.backgroundColor = .lightGray
+        customView.backgroundColor = .white
         view.addSubview(customView)
         
         navigationController?.navigationBar.backgroundColor = .white
@@ -71,6 +71,10 @@ class ProductDetailVC: UIViewController {
         
         // Sabit view'i oluşturma
         let bottomView = UIView(frame: CGRect(x: 0, y: view.frame.size.height - 100, width: view.frame.size.width, height: 100))
+        bottomView.layer.shadowColor = UIColor.black.cgColor
+        bottomView.layer.shadowOpacity = 0.5
+        bottomView.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+        bottomView.layer.shadowRadius = 4
         bottomView.backgroundColor = .white
         view.addSubview(bottomView)
         

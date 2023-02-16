@@ -11,6 +11,8 @@ class BasketTVCell: UITableViewCell {
     let productImageView = UIImageView()
     let nameLabel = UILabel()
     let priceLabel = UILabel()
+    let deleteProductButton = UIButton()
+    let deleteAllButton = UIButton()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -31,6 +33,13 @@ class BasketTVCell: UITableViewCell {
         
         priceLabel.font = UIFont.systemFont(ofSize: 12)
         contentView.addSubview(priceLabel)
+        
+        deleteProductButton.imageView?.image = UIImage(named: "deleteIcon")
+        contentView.addSubview(deleteProductButton)
+        
+        deleteAllButton.titleLabel?.text = "Hepsini Sil"
+        contentView.addSubview(deleteAllButton)
+
         
         productImageView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false

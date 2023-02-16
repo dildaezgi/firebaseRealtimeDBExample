@@ -27,6 +27,29 @@ class BasketVC: UIViewController {
         tableView.dataSource = self
         view.addSubview(tableView)
     }
+    
+    @objc func deleteProductButtonTapped(sender: UIButton) {
+        if let indexPath = tableView.indexPath(for: sender.superview?.superview as! UITableViewCell) {
+            var product = addedProducts[indexPath.row]
+            product.removeValue(forKey: "basket")
+            addedProducts.remove(at: indexPath.row)
+            UserDefaults.standard.set(addedProducts, forKey: "basket")
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    @objc func deleteAllButtonTapped(sender: UIButton) {
+        if let indexPath = tableView.indexPath(for: sender.superview?.superview as! UITableViewCell) {
+            var product = addedProducts[indexPath.row]
+            product.removeValue(forKey: "basket")
+            let basket: [[String:Any]] = []
+            let updatedBasket = basket.filter { $0["id"] as? String != product["id"] as? String }
+            UserDefaults.standard.set(updatedBasket, forKey: "basket")
+            addedProducts.removeAll()
+            tableView.reloadData()
+        }
+    }
+
 }
 
 extension BasketVC: UITableViewDataSource, UITableViewDelegate {
@@ -47,7 +70,36 @@ extension BasketVC: UITableViewDataSource, UITableViewDelegate {
         cell.nameLabel.text = product["name"] as? String
         cell.priceLabel.text = "\(product["price"] as? Double ?? 0.0) TL"
         
-        //urun silme ve sepeti tamamen bosaltma butonlari olacak
+        cell.deleteProductButton.frame = CGRect(x: cell.frame.width - 40, y: cell.frame.height - 40, width: 40, height: 40)
+        cell.deleteProductButton.imageView?.image = UIImage(named: "deleteIcon")
+        cell.deleteProductButton.backgroundColor = .red
+        cell.deleteProductButton.addTarget(self, action: #selector(deleteProductButtonTapped), for: .touchUpInside)
+        
+        cell.deleteAllButton.frame = CGRect(x: cell.frame.width - 150, y: cell.frame.height - 40, width: 100, height: 40)
+        cell.deleteAllButton.backgroundColor = .green
+        cell.deleteAllButton.addTarget(self, action: #selector(deleteAllButtonTapped), for: .touchUpInside)
+
+        let bottomView = UIView(frame: CGRect(x: 0, y: view.frame.size.height - 100, width: view.frame.size.width, height: 100))
+        bottomView.layer.shadowColor = UIColor.black.cgColor
+        bottomView.layer.shadowOpacity = 0.5
+        bottomView.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+        bottomView.layer.shadowRadius = 4
+        bottomView.layer.masksToBounds = false
+        bottomView.backgroundColor = .white
+        view.addSubview(bottomView)
+        
+        // Ürün fiyatı label'ı
+        let priceLabel = UILabel(frame: CGRect(x: 0, y: 20, width: 150, height: 40))
+//        priceLabel.text = "\(product.productPrice) TL"
+        priceLabel.textAlignment = .right
+        bottomView.addSubview(priceLabel)
+
+        let addToBasketButton = UIButton(frame: CGRect(x: 196, y: 20, width: bottomView.frame.size.width - 220, height: 40))
+        addToBasketButton.backgroundColor = .blue
+        addToBasketButton.layer.cornerRadius = 6
+        addToBasketButton.setTitle("Sepeti Onayla", for: .normal)
+        bottomView.addSubview(addToBasketButton)
+        
         return cell
         
     }
