@@ -49,7 +49,7 @@ class ProductListCVCell: UICollectionViewCell {
     }
     
     func configure(withData data: Product) {
-        let url = URL(string: data.productImage)
+        let url = URL(string: data.productImages.image1 ?? "")
         DispatchQueue.global().async {
             if let data = try? Data(contentsOf: url!) {
                 DispatchQueue.main.async {

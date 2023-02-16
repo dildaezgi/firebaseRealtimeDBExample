@@ -53,7 +53,7 @@ class ProductListVC: UIViewController {
             var addedProducts = UserDefaults.standard.array(forKey: "basket") as? [[String: Any]] ?? []
             
             // Yeni ürünü sepete ekleyin
-            let newProduct = ["productID": product.productID, "name": product.productName, "price": product.productPrice, "rate": product.productRate, "image": product.productImage] as [String : Any]
+            let newProduct = ["productID": product.productID, "name": product.productName, "price": product.productPrice, "rate": product.productRate, "image": product.productImages.image1 ?? ""] as [String : Any]
             addedProducts.append(newProduct)
             
             // Sepete eklenen ürünleri güncelleyin
@@ -112,9 +112,11 @@ class ProductListVC: UIViewController {
                     let productName = productDict["productName"] as? String
                     let productPrice = productDict["productPrice"] as? Float
                     let productRate = productDict["productRate"] as? Float
-                    let productImage = productDict["productImage"] as? String
+                    let productImagesDict = productDict["productImages"] as? [String: String]
                     let productID = productDict["productID"] as? String
-                    let product = Product(productImage: productImage ?? "", productName: productName ?? "", productID: productID ?? "", productPrice: productPrice ?? 0.0, productRate: productRate ?? 0.0)
+                    
+                    let productImages = ProductImages(image1: productImagesDict?["image1"] ?? "", image2: productImagesDict?["image2"] ?? "")
+                    let product = Product(productName: productName ?? "", productID: productID ?? "", productPrice: productPrice ?? 0.0, productRate: productRate ?? 0.0, productImages: productImages)
                     self.data.append(product)
                 }
             }

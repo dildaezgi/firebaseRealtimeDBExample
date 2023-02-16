@@ -25,6 +25,7 @@
 		D9ADA4BE299BCAFB00DC0FD3 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4BD299BCAFB00DC0FD3 /* ProductModel.swift */; };
 		D9ADA4C0299BEF4400DC0FD3 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4BF299BEF4400DC0FD3 /* Navigator.swift */; };
 		D9ADA4C2299D15AB00DC0FD3 /* ProductListCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4C1299D15AB00DC0FD3 /* ProductListCVCell.swift */; };
+		D9ADA4C5299DAFCF00DC0FD3 /* BasketTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4C4299DAFCF00DC0FD3 /* BasketTVCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		D9ADA4BD299BCAFB00DC0FD3 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		D9ADA4BF299BEF4400DC0FD3 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		D9ADA4C1299D15AB00DC0FD3 /* ProductListCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCVCell.swift; sourceTree = "<group>"; };
+		D9ADA4C4299DAFCF00DC0FD3 /* BasketTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTVCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			children = (
 				D9ADA4B8299B7CF700DC0FD3 /* BasketVC.swift */,
 				D9ADA4BA299B7D0500DC0FD3 /* BasketViewModel.swift */,
+				D9ADA4C3299DAFB100DC0FD3 /* Cell */,
 			);
 			path = Basket;
 			sourceTree = "<group>";
@@ -160,6 +163,14 @@
 			isa = PBXGroup;
 			children = (
 				D9ADA4C1299D15AB00DC0FD3 /* ProductListCVCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D9ADA4C3299DAFB100DC0FD3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D9ADA4C4299DAFCF00DC0FD3 /* BasketTVCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -245,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9ADA4B5299B7CDD00DC0FD3 /* ProductDetailVC.swift in Sources */,
+				D9ADA4C5299DAFCF00DC0FD3 /* BasketTVCell.swift in Sources */,
 				D9ADA4B3299B7CCF00DC0FD3 /* ProductListViewModel.swift in Sources */,
 				D9ADA4B7299B7CEB00DC0FD3 /* ProductDetailViewModel.swift in Sources */,
 				D9ADA4BB299B7D0500DC0FD3 /* BasketViewModel.swift in Sources */,

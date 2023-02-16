@@ -14,8 +14,14 @@ struct Products: Codable {
 
 // MARK: - Product
 struct Product: Codable {
-    let productImage: String
+//    let productImage: String
     let productName: String
     let productID: String
     let productPrice, productRate: Float
+    let productImages: ProductImages
+}
+
+// MARK: - ProductImages
+struct ProductImages: Codable {
+    let image1, image2: String?
 }
