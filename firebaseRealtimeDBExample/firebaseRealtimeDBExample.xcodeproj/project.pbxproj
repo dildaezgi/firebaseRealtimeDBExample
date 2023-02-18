@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D99C37EC299ECE3A00CC7544 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C37EB299ECE3A00CC7544 /* UIImageViewExtension.swift */; };
+		D99C37EE29A19A6900CC7544 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C37ED29A19A6900CC7544 /* EmptyView.swift */; };
 		D9ADA487299AD6D900DC0FD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA486299AD6D900DC0FD3 /* AppDelegate.swift */; };
 		D9ADA489299AD6D900DC0FD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA488299AD6D900DC0FD3 /* SceneDelegate.swift */; };
 		D9ADA48B299AD6D900DC0FD3 /* ProductListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA48A299AD6D900DC0FD3 /* ProductListVC.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		D99C37EB299ECE3A00CC7544 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		D99C37ED29A19A6900CC7544 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		D9ADA483299AD6D900DC0FD3 /* firebaseRealtimeDBExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = firebaseRealtimeDBExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9ADA486299AD6D900DC0FD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9ADA488299AD6D900DC0FD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				D9ADA4BF299BEF4400DC0FD3 /* Navigator.swift */,
 				D99C37EB299ECE3A00CC7544 /* UIImageViewExtension.swift */,
+				D99C37ED29A19A6900CC7544 /* EmptyView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				D9ADA4C5299DAFCF00DC0FD3 /* BasketTVCell.swift in Sources */,
 				D9ADA4B3299B7CCF00DC0FD3 /* ProductListViewModel.swift in Sources */,
 				D9ADA4C0299BEF4400DC0FD3 /* Navigator.swift in Sources */,
+				D99C37EE29A19A6900CC7544 /* EmptyView.swift in Sources */,
 				D9ADA4B9299B7CF700DC0FD3 /* BasketVC.swift in Sources */,
 				D9ADA48B299AD6D900DC0FD3 /* ProductListVC.swift in Sources */,
 				D9ADA487299AD6D900DC0FD3 /* AppDelegate.swift in Sources */,

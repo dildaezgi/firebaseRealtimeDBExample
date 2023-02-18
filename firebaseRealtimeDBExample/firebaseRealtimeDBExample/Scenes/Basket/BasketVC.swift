@@ -10,6 +10,7 @@ import UIKit
 
 class BasketVC: UIViewController {
     var tableView = UITableView()
+    var emptyView = EmptyView()
     var addedProducts = [[String: Any]]()
     var totalPrice = 0.0
     
@@ -22,11 +23,16 @@ class BasketVC: UIViewController {
             self.addedProducts = addedProducts
         }
         
-        tableView = UITableView(frame: view.bounds, style: .plain)
-        tableView.register(BasketTVCell.self, forCellReuseIdentifier: "BasketTVCell")
-        tableView.delegate = self
-        tableView.dataSource = self
-        view.addSubview(tableView)
+        if addedProducts.isEmpty {
+            emptyView = EmptyView(frame: self.view.frame)
+            self.view.addSubview(emptyView)
+        } else {
+            tableView = UITableView(frame: view.bounds, style: .plain)
+            tableView.register(BasketTVCell.self, forCellReuseIdentifier: "BasketTVCell")
+            tableView.delegate = self
+            tableView.dataSource = self
+            view.addSubview(tableView)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -48,9 +54,15 @@ class BasketVC: UIViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
             totalPrice = 0
             if let addedProducts = UserDefaults.standard.array(forKey: "basket") as? [[String: Any]] {
-                for product in addedProducts {
-                    if let price = product["price"] as? Double {
-                        totalPrice += price
+                if addedProducts.isEmpty {
+                    tableView.isHidden = true
+                    emptyView = EmptyView(frame: self.view.frame)
+                    self.view.addSubview(emptyView)
+                } else {
+                    for product in addedProducts {
+                        if let price = product["price"] as? Double {
+                            totalPrice += price
+                        }
                     }
                 }
             }
@@ -66,7 +78,9 @@ class BasketVC: UIViewController {
             let updatedBasket = basket.filter { $0["id"] as? String != product["id"] as? String }
             UserDefaults.standard.set(updatedBasket, forKey: "basket")
             addedProducts.removeAll()
-            tableView.reloadData()
+            tableView.isHidden = true
+            emptyView = EmptyView(frame: self.view.frame)
+            self.view.addSubview(emptyView)
         }
     }
 
