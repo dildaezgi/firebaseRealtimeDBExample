@@ -101,7 +101,7 @@ class ProductListVC: UIViewController, UISearchBarDelegate {
         
         let searchBar = UISearchBar()
         searchBar.delegate = self
-        searchBar.placeholder = "Ara"
+        searchBar.placeholder = "Marka, ürün veya hizmet arayın"
         searchBar.showsCancelButton = false
         view.addSubview(searchBar)
         searchBar.translatesAutoresizingMaskIntoConstraints = false
@@ -120,7 +120,7 @@ class ProductListVC: UIViewController, UISearchBarDelegate {
             for (_, value) in dict {
                 if let productDict = value as? [String: Any] {
                     let productName = productDict["productName"] as? String
-                    let productPrice = productDict["productPrice"] as? Float
+                    let productPrice = productDict["productPrice"] as? Double
                     let productRate = productDict["productRate"] as? Float
                     let productImagesDict = productDict["productImages"] as? [String: String]
                     let productID = productDict["productID"] as? String
@@ -130,7 +130,7 @@ class ProductListVC: UIViewController, UISearchBarDelegate {
                     self.data.append(product)
                 }
             }
-            self.filteredItems = self.data // Filtrelenmiş öğeler için data dizisini kullanın
+            self.filteredItems = self.data // Filtrelenmiş öğeler için data dizisi
             self.collectionView.reloadData()
         }
     }
@@ -138,7 +138,7 @@ class ProductListVC: UIViewController, UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredItems = []
         if searchText == "" {
-            filteredItems = data // Arama yapılmadığında tüm öğeleri gösterir
+            filteredItems = data // Arama yapılmadığında tüm öğeleri gösterme
         } else {
             for item in data {
                 if item.productName.lowercased().contains(searchText.lowercased()) {

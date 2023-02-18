@@ -90,7 +90,7 @@ extension BasketVC: UITableViewDataSource, UITableViewDelegate {
         
         // Ürün fiyatı label'ı
         let priceLabel = UILabel(frame: CGRect(x: 0, y: 20, width: 150, height: 40))
-//        priceLabel.text = "\(product.productPrice) TL"
+        priceLabel.text = "\(cell.totalPrice) TL"
         priceLabel.textAlignment = .right
         bottomView.addSubview(priceLabel)
 

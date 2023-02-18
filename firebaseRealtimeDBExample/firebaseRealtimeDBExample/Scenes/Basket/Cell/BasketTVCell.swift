@@ -14,6 +14,8 @@ class BasketTVCell: UITableViewCell {
     let deleteProductButton = UIButton()
     let deleteAllButton = UIButton()
     
+    var totalPrice = 0.0
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -31,13 +33,20 @@ class BasketTVCell: UITableViewCell {
         nameLabel.font = UIFont.boldSystemFont(ofSize: 14)
         contentView.addSubview(nameLabel)
         
+        if let addedProducts = UserDefaults.standard.array(forKey: "basket") as? [[String: Any]] {
+            for product in addedProducts {
+                if let price = product["price"] as? Double {
+                    totalPrice += price
+                }
+            }
+        }
         priceLabel.font = UIFont.systemFont(ofSize: 12)
         contentView.addSubview(priceLabel)
         
-        deleteProductButton.imageView?.image = UIImage(named: "deleteIcon")
+        deleteProductButton.setImage(UIImage(named: "deleteIcon"), for: .normal)
         contentView.addSubview(deleteProductButton)
         
-        deleteAllButton.titleLabel?.text = "Hepsini Sil"
+        deleteAllButton.setTitle("Hepsini Sil", for: .normal)
         contentView.addSubview(deleteAllButton)
 
         

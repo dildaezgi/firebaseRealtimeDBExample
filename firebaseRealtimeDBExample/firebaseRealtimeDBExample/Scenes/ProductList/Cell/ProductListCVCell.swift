@@ -24,6 +24,7 @@ class ProductListCVCell: UICollectionViewCell {
         nameLabel = UILabel(frame: CGRect(x: 0, y: 256, width: contentView.bounds.width, height: 20))
         nameLabel.textAlignment = .center
         nameLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        nameLabel.numberOfLines = 0
         contentView.addSubview(nameLabel)
         
         priceLabel = UILabel(frame: CGRect(x: 10, y: 277, width: contentView.bounds.width, height: 20))

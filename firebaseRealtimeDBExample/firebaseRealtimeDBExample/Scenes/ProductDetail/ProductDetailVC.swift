@@ -9,6 +9,9 @@ import UIKit
 
 class ProductDetailVC: UIViewController {
     let product: Product
+    let scrollView = UIScrollView()
+    let pageControl = UIPageControl()
+    
     var productNameLabel = UILabel()
     var productImage1 = UIImageView()
     var productImage2 = UIImageView()
@@ -21,7 +24,7 @@ class ProductDetailVC: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    required init?(coder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -32,25 +35,45 @@ class ProductDetailVC: UIViewController {
         
         navigationController?.navigationBar.backgroundColor = .white
         
-        setupScrollView()
-        setupPageControl()
-
-        if let imageURL1 = product.productImages.image1, let stringURL1 = URL(string: imageURL1) {
-            productImage1.load(url: stringURL1)
-        }
+        // Set up scroll view
+        scrollView.frame = CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height / 2)
+        scrollView.isPagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.contentSize = CGSize(width: scrollView.frame.width * 2, height: scrollView.frame.height)
+        scrollView.delegate = self
         
-        if let imageURL2 = product.productImages.image1, let stringURL2 = URL(string: imageURL2) {
-            productImage2.load(url: stringURL2)
-        }
+        // Add image views to scroll view
+        let imageView1 = UIImageView(frame: CGRect(x: 0, y: 0, width: scrollView.frame.width, height: scrollView.frame.height))
+        imageView1.contentMode = .scaleAspectFit
         
-//        productImage1.frame = CGRect(x: 0, y: 44, width: self.view.frame.width, height: 385)
-
+        if let image1string = URL(string: product.productImages.image1 ?? "") {
+            imageView1.load(url: image1string)
+        }
+        scrollView.addSubview(imageView1)
+        
+        let imageView2 = UIImageView(frame: CGRect(x: scrollView.frame.width, y: 0, width: scrollView.frame.width, height: scrollView.frame.height))
+        imageView2.contentMode = .scaleAspectFit
+        if let image2string = URL(string: product.productImages.image2 ?? "") {
+            imageView2.load(url: image2string)
+        }
+        scrollView.addSubview(imageView2)
+        
+        view.addSubview(scrollView)
+        
+        // Set up page control
+        pageControl.frame = CGRect(x: 0, y: scrollView.frame.maxY, width: view.frame.width, height: 50)
+        pageControl.numberOfPages = 2
+        pageControl.currentPage = 0
+        pageControl.pageIndicatorTintColor = .lightGray
+        pageControl.currentPageIndicatorTintColor = .black
+        view.addSubview(pageControl)
+        
         productNameLabel.text = product.productName
         productNameLabel.textColor = .black
         productNameLabel.font = .systemFont(ofSize: 20)
         productNameLabel.sizeToFit()
         productNameLabel.numberOfLines = 0
-        productNameLabel.frame = CGRect(x: 16, y: 485, width: self.view.frame.width - 16, height: 60)
+        productNameLabel.frame = CGRect(x: 16, y: 585, width: self.view.frame.width - 16, height: 60)
         view.addSubview(productNameLabel)
         
         titleLabel.text = "Ürün Açıklaması"
@@ -58,7 +81,7 @@ class ProductDetailVC: UIViewController {
         titleLabel.font = .systemFont(ofSize: 13)
         titleLabel.sizeToFit()
         titleLabel.numberOfLines = 0
-        titleLabel.frame = CGRect(x: 16, y: 535, width: self.view.frame.width - 16, height: 60)
+        titleLabel.frame = CGRect(x: 16, y: 635, width: self.view.frame.width - 16, height: 60)
         view.addSubview(titleLabel)
         
         descriptionLabel.text = "Ürünlerimizin çevre etkisini azaltmaya yardımcı olan teknolojiler ve ham maddeler kullanılarak imal edilen kıyafetleri Join Life olarak etiketlendiriyoruz..."
@@ -66,7 +89,7 @@ class ProductDetailVC: UIViewController {
         descriptionLabel.font = .systemFont(ofSize: 12)
         descriptionLabel.sizeToFit()
         descriptionLabel.numberOfLines = 0
-        descriptionLabel.frame = CGRect(x: 16, y: 585, width: self.view.frame.width - 16, height: 60)
+        descriptionLabel.frame = CGRect(x: 16, y: 685, width: self.view.frame.width - 16, height: 60)
         view.addSubview(descriptionLabel)
         
         // Sabit view'i oluşturma
@@ -93,54 +116,24 @@ class ProductDetailVC: UIViewController {
         bottomView.addSubview(addToBasketButton)
     }
     
-    func setupView() {
-        
-    }
-    
     @objc func addToBasketButtonTapped(_ sender: UIButton) {
         print("basildi")
 
         var addedProducts = UserDefaults.standard.array(forKey: "basket") as? [[String: Any]] ?? []
         
-        // Yeni ürünü sepete ekleyin
+        // Yeni ürünü sepete eklemek
         let newProduct = ["productID": product.productID, "name": product.productName, "price": product.productPrice, "rate": product.productRate, "image": product.productImages.image1 ?? ""] as [String : Any]
         addedProducts.append(newProduct)
         
-        // Sepete eklenen ürünleri güncelleyin
+        // Sepete eklenen ürünleri güncellemek
         UserDefaults.standard.set(addedProducts, forKey: "basket")
     }
-    
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.isPagingEnabled = true
-        return scrollView
-    }()
-    
-    private let pageControl: UIPageControl = {
-         let pageControl = UIPageControl()
-         pageControl.pageIndicatorTintColor = .lightGray
-         pageControl.currentPageIndicatorTintColor = .black
-         return pageControl
-     }()
-    
-    private func setupScrollView() {
-        view.addSubview(scrollView)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-//        let imageViews = [product.productImages.image1, product.productImages.image2]
-        //imagelar nasil alinicak?
-    }
-    
-    private func setupPageControl() {
-        pageControl.numberOfPages = 2 // veya resim sayısı kadar olabilir
-        view.addSubview(pageControl)
-        pageControl.translatesAutoresizingMaskIntoConstraints = false
-        pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+}
+
+extension ProductDetailVC: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageNumber = Int(round(scrollView.contentOffset.x / scrollView.frame.size.width))
+        pageControl.currentPage = pageNumber
     }
 }
 
