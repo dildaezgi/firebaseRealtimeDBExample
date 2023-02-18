@@ -8,41 +8,70 @@
 import UIKit
 
 class ProductListCVCell: UICollectionViewCell {
-    var imageView = UIImageView()
-    var nameLabel = UILabel()
-    var priceLabel = UILabel()
-    var addToBasketButton = UIButton()
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = .black
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let priceLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let addToBasketButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Sepete Ekle", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor(named: "pazaramaPink")
+        button.layer.cornerRadius = 6
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: contentView.bounds.width - 1, height: 250))
-        imageView.layer.cornerRadius = 6
-        imageView.contentMode = .scaleAspectFit
+        // Add subviews
         contentView.addSubview(imageView)
-        
-        nameLabel = UILabel(frame: CGRect(x: 0, y: 256, width: contentView.bounds.width, height: 20))
-        nameLabel.textAlignment = .center
-        nameLabel.font = UIFont.boldSystemFont(ofSize: 12)
-        nameLabel.numberOfLines = 0
         contentView.addSubview(nameLabel)
-        
-        priceLabel = UILabel(frame: CGRect(x: 10, y: 277, width: contentView.bounds.width, height: 20))
-        priceLabel.textAlignment = .center
-        priceLabel.font = UIFont.boldSystemFont(ofSize: 12)
-        priceLabel.textColor = .black
         contentView.addSubview(priceLabel)
-        
-        addToBasketButton = UIButton(type: .system)
-        addToBasketButton.setTitle("Sepete Ekle", for: .normal)
-        addToBasketButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
-        addToBasketButton.setTitleColor(.white, for: .normal)
-        addToBasketButton.frame = CGRect(x: 0, y: 300 , width:  contentView.bounds.width, height: 40)
-        addToBasketButton.configuration?.contentInsets.trailing = 20
-        addToBasketButton.configuration?.contentInsets.leading = 20
-        addToBasketButton.backgroundColor = UIColor(named: "pazaramaPink")
-        addToBasketButton.layer.cornerRadius = 6
         contentView.addSubview(addToBasketButton)
+        
+        // Configure constraints
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+            imageView.heightAnchor.constraint(equalToConstant: 200),
+            
+            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 2),
+            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            
+            priceLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 2),
+            priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            
+            addToBasketButton.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 8),
+            addToBasketButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            addToBasketButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            addToBasketButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            addToBasketButton.heightAnchor.constraint(equalToConstant: 40),
+        ])
     }
     
     required init?(coder: NSCoder) {

@@ -181,7 +181,7 @@ extension ProductListVC: UICollectionViewDelegateFlowLayout, UICollectionViewDat
             + flowLayout.sectionInset.right
             + (flowLayout.minimumInteritemSpacing * CGFloat(noOfCellsInRow - 1))
         let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(noOfCellsInRow))
-        return CGSize(width: size, height: 380)
+        return CGSize(width: size, height: 330)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
