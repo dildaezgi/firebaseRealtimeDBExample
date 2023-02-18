@@ -32,14 +32,7 @@ class BasketTVCell: UITableViewCell {
         
         nameLabel.font = UIFont.boldSystemFont(ofSize: 14)
         contentView.addSubview(nameLabel)
-        
-        if let addedProducts = UserDefaults.standard.array(forKey: "basket") as? [[String: Any]] {
-            for product in addedProducts {
-                if let price = product["price"] as? Double {
-                    totalPrice += price
-                }
-            }
-        }
+    
         priceLabel.font = UIFont.systemFont(ofSize: 12)
         contentView.addSubview(priceLabel)
         
@@ -47,9 +40,10 @@ class BasketTVCell: UITableViewCell {
         contentView.addSubview(deleteProductButton)
         
         deleteAllButton.setTitle("Hepsini Sil", for: .normal)
+        deleteAllButton.setTitleColor(.black, for: .normal)
+        deleteAllButton.titleLabel?.font = UIFont.systemFont(ofSize: 10)
         contentView.addSubview(deleteAllButton)
 
-        
         productImageView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.translatesAutoresizingMaskIntoConstraints = false

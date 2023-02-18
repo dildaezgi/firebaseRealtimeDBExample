@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 
 class BasketVC: UIViewController {
-    var tableView: UITableView!
+    var tableView = UITableView()
     var addedProducts = [[String: Any]]()
+    var totalPrice = 0.0
     
     let cellReuseIdentifier = "productCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // UserDefaults'tan sepete eklenen ürünleri almak
+
         if let addedProducts = UserDefaults.standard.array(forKey: "basket") as? [[String: Any]] {
             self.addedProducts = addedProducts
         }
@@ -29,6 +29,16 @@ class BasketVC: UIViewController {
         view.addSubview(tableView)
     }
     
+    override func viewDidLayoutSubviews() {
+        if let addedProducts = UserDefaults.standard.array(forKey: "basket") as? [[String: Any]] {
+            for product in addedProducts {
+                if let price = product["price"] as? Double {
+                    totalPrice += price
+                }
+            }
+        }
+    }
+    
     @objc func deleteProductButtonTapped(sender: UIButton) {
         if let indexPath = tableView.indexPath(for: sender.superview?.superview as! UITableViewCell) {
             var product = addedProducts[indexPath.row]
@@ -36,9 +46,18 @@ class BasketVC: UIViewController {
             addedProducts.remove(at: indexPath.row)
             UserDefaults.standard.set(addedProducts, forKey: "basket")
             tableView.deleteRows(at: [indexPath], with: .fade)
+            totalPrice = 0
+            if let addedProducts = UserDefaults.standard.array(forKey: "basket") as? [[String: Any]] {
+                for product in addedProducts {
+                    if let price = product["price"] as? Double {
+                        totalPrice += price
+                    }
+                }
+            }
+            tableView.reloadData()
         }
     }
-    
+
     @objc func deleteAllButtonTapped(sender: UIButton) {
         if let indexPath = tableView.indexPath(for: sender.superview?.superview as! UITableViewCell) {
             var product = addedProducts[indexPath.row]
@@ -71,13 +90,11 @@ extension BasketVC: UITableViewDataSource, UITableViewDelegate {
         cell.nameLabel.text = product["name"] as? String
         cell.priceLabel.text = "\(product["price"] as? Double ?? 0.0) TL"
         
-        cell.deleteProductButton.frame = CGRect(x: cell.frame.width - 40, y: cell.frame.height - 40, width: 40, height: 40)
+        cell.deleteProductButton.frame = CGRect(x: cell.frame.width - 40, y: cell.frame.height - 40, width: 25, height: 25)
         cell.deleteProductButton.imageView?.image = UIImage(named: "deleteIcon")
-        cell.deleteProductButton.backgroundColor = .red
         cell.deleteProductButton.addTarget(self, action: #selector(deleteProductButtonTapped), for: .touchUpInside)
         
         cell.deleteAllButton.frame = CGRect(x: cell.frame.width - 150, y: cell.frame.height - 40, width: 100, height: 40)
-        cell.deleteAllButton.backgroundColor = .green
         cell.deleteAllButton.addTarget(self, action: #selector(deleteAllButtonTapped), for: .touchUpInside)
 
         let bottomView = UIView(frame: CGRect(x: 0, y: view.frame.size.height - 100, width: view.frame.size.width, height: 100))
@@ -89,9 +106,8 @@ extension BasketVC: UITableViewDataSource, UITableViewDelegate {
         bottomView.backgroundColor = .white
         view.addSubview(bottomView)
         
-        // Ürün fiyatı label'ı
         let priceLabel = UILabel(frame: CGRect(x: 0, y: 20, width: 150, height: 40))
-        priceLabel.text = "\(cell.totalPrice) TL"
+        priceLabel.text = "\(self.totalPrice) TL"
         priceLabel.textAlignment = .right
         bottomView.addSubview(priceLabel)
 
