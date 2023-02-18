@@ -8,10 +8,10 @@
 import UIKit
 
 class ProductListCVCell: UICollectionViewCell {
-    var imageView: UIImageView!
-    var nameLabel: UILabel!
-    var priceLabel: UILabel!
-    var addToBasketButton: UIButton!
+    var imageView = UIImageView()
+    var nameLabel = UILabel()
+    var priceLabel = UILabel()
+    var addToBasketButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
