@@ -11,6 +11,7 @@ import UIKit
 class BasketVC: UIViewController {
     var tableView: UITableView!
     var addedProducts = [[String: Any]]()
+    
     let cellReuseIdentifier = "productCell"
     
     override func viewDidLoad() {
