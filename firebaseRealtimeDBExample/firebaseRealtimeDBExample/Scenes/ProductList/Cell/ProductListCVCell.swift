@@ -44,14 +44,12 @@ class ProductListCVCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        // Add subviews
+
         contentView.addSubview(imageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(priceLabel)
         contentView.addSubview(addToBasketButton)
         
-        // Configure constraints
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),

@@ -11,13 +11,13 @@ class ProductDetailVC: UIViewController {
     let product: Product
     let scrollView = UIScrollView()
     let pageControl = UIPageControl()
-    
-    var productNameLabel = UILabel()
-    var productImage1 = UIImageView()
-    var productImage2 = UIImageView()
-    var priceLabel = UILabel()
-    var descriptionLabel = UILabel()
-    var titleLabel = UILabel()
+    let navigator = Navigator()
+    let productNameLabel = UILabel()
+    let productImage1 = UIImageView()
+    let productImage2 = UIImageView()
+    let priceLabel = UILabel()
+    let descriptionLabel = UILabel()
+    let titleLabel = UILabel()
     
     init(product: Product) {
         self.product = product
@@ -29,6 +29,7 @@ class ProductDetailVC: UIViewController {
     }
     
     override func viewDidLoad() {
+        navigator.navController = navigationController!
         setupView()
     }
     
@@ -37,6 +38,8 @@ class ProductDetailVC: UIViewController {
         let newProduct = ["productID": product.productID, "name": product.productName, "price": product.productPrice, "rate": product.productRate, "image": product.productImages.image1 ?? ""] as [String : Any]
         addedProducts.append(newProduct)
         UserDefaults.standard.set(addedProducts, forKey: "basket")
+        let basketVC = BasketVC()
+        navigator.navigateTo(basketVC, animated: true)
     }
     
     func setupView() {

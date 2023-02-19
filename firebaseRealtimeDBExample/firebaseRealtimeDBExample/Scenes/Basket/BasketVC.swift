@@ -14,11 +14,14 @@ class BasketVC: UIViewController {
     var addedProducts = [[String: Any]]()
     var totalPrice = 0.0
     
+    let navigator = Navigator()
     let cellReuseIdentifier = "productCell"
+    
+    private let viewModel = ProductListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigator.navController = navigationController!
         if let addedProducts = UserDefaults.standard.array(forKey: "basket") as? [[String: Any]] {
             self.addedProducts = addedProducts
         }
@@ -83,7 +86,6 @@ class BasketVC: UIViewController {
             self.view.addSubview(emptyView)
         }
     }
-
 }
 
 extension BasketVC: UITableViewDataSource, UITableViewDelegate {

@@ -13,7 +13,6 @@ class ProductListVC: UIViewController, UISearchBarDelegate {
     let navigator = Navigator()
     var collectionView: UICollectionView!
 
-    
     private let spacing : CGFloat = 15.0
     private let viewModel = ProductListViewModel()
 
