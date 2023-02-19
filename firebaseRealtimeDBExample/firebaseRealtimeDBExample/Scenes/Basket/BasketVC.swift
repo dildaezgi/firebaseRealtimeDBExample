@@ -104,7 +104,7 @@ extension BasketVC: UITableViewDataSource, UITableViewDelegate {
         cell.nameLabel.text = product["name"] as? String
         cell.priceLabel.text = "\(product["price"] as? Double ?? 0.0) TL"
         
-        cell.deleteProductButton.frame = CGRect(x: cell.frame.width - 40, y: cell.frame.height - 40, width: 25, height: 25)
+        cell.deleteProductButton.frame = CGRect(x: cell.frame.width - 35, y: cell.frame.height - 35, width: 25, height: 25)
         cell.deleteProductButton.imageView?.image = UIImage(named: "deleteIcon")
         cell.deleteProductButton.addTarget(self, action: #selector(deleteProductButtonTapped), for: .touchUpInside)
         
@@ -120,7 +120,7 @@ extension BasketVC: UITableViewDataSource, UITableViewDelegate {
         bottomView.backgroundColor = .white
         view.addSubview(bottomView)
         
-        let priceLabel = UILabel(frame: CGRect(x: 0, y: 20, width: 150, height: 40))
+        let priceLabel = UILabel(frame: CGRect(x: -50, y: 20, width: 150, height: 40))
         priceLabel.text = "\(self.totalPrice) TL"
         priceLabel.textAlignment = .right
         bottomView.addSubview(priceLabel)
