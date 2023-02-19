@@ -7,23 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D99C37EC299ECE3A00CC7544 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C37EB299ECE3A00CC7544 /* UIImageViewExtension.swift */; };
+		D99C37EE29A19A6900CC7544 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C37ED29A19A6900CC7544 /* EmptyView.swift */; };
 		D9ADA487299AD6D900DC0FD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA486299AD6D900DC0FD3 /* AppDelegate.swift */; };
 		D9ADA489299AD6D900DC0FD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA488299AD6D900DC0FD3 /* SceneDelegate.swift */; };
-		D9ADA48B299AD6D900DC0FD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA48A299AD6D900DC0FD3 /* ViewController.swift */; };
+		D9ADA48B299AD6D900DC0FD3 /* ProductListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA48A299AD6D900DC0FD3 /* ProductListVC.swift */; };
 		D9ADA48E299AD6D900DC0FD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9ADA48C299AD6D900DC0FD3 /* Main.storyboard */; };
 		D9ADA490299AD6DC00DC0FD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9ADA48F299AD6DC00DC0FD3 /* Assets.xcassets */; };
 		D9ADA493299AD6DC00DC0FD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9ADA491299AD6DC00DC0FD3 /* LaunchScreen.storyboard */; };
+		D9ADA49B299AD9C200DC0FD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9ADA49A299AD9C200DC0FD3 /* GoogleService-Info.plist */; };
+		D9ADA49E299ADAD400DC0FD3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D9ADA49D299ADAD400DC0FD3 /* FirebaseAnalytics */; };
+		D9ADA4A0299ADAD400DC0FD3 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D9ADA49F299ADAD400DC0FD3 /* FirebaseDatabase */; };
+		D9ADA4A2299ADAD400DC0FD3 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D9ADA4A1299ADAD400DC0FD3 /* FirebaseDatabaseSwift */; };
+		D9ADA4B3299B7CCF00DC0FD3 /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4B2299B7CCF00DC0FD3 /* ProductListViewModel.swift */; };
+		D9ADA4B5299B7CDD00DC0FD3 /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4B4299B7CDD00DC0FD3 /* ProductDetailVC.swift */; };
+		D9ADA4B9299B7CF700DC0FD3 /* BasketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4B8299B7CF700DC0FD3 /* BasketVC.swift */; };
+		D9ADA4BE299BCAFB00DC0FD3 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4BD299BCAFB00DC0FD3 /* ProductModel.swift */; };
+		D9ADA4C0299BEF4400DC0FD3 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4BF299BEF4400DC0FD3 /* Navigator.swift */; };
+		D9ADA4C2299D15AB00DC0FD3 /* ProductListCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4C1299D15AB00DC0FD3 /* ProductListCVCell.swift */; };
+		D9ADA4C5299DAFCF00DC0FD3 /* BasketTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ADA4C4299DAFCF00DC0FD3 /* BasketTVCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D99C37EB299ECE3A00CC7544 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		D99C37ED29A19A6900CC7544 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		D9ADA483299AD6D900DC0FD3 /* firebaseRealtimeDBExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = firebaseRealtimeDBExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9ADA486299AD6D900DC0FD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9ADA488299AD6D900DC0FD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D9ADA48A299AD6D900DC0FD3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D9ADA48A299AD6D900DC0FD3 /* ProductListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListVC.swift; sourceTree = "<group>"; };
 		D9ADA48D299AD6D900DC0FD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D9ADA48F299AD6DC00DC0FD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9ADA492299AD6DC00DC0FD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9ADA494299AD6DC00DC0FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9ADA49A299AD9C200DC0FD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D9ADA4B2299B7CCF00DC0FD3 /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModel.swift; sourceTree = "<group>"; };
+		D9ADA4B4299B7CDD00DC0FD3 /* ProductDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVC.swift; sourceTree = "<group>"; };
+		D9ADA4B8299B7CF700DC0FD3 /* BasketVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketVC.swift; sourceTree = "<group>"; };
+		D9ADA4BD299BCAFB00DC0FD3 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		D9ADA4BF299BEF4400DC0FD3 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		D9ADA4C1299D15AB00DC0FD3 /* ProductListCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCVCell.swift; sourceTree = "<group>"; };
+		D9ADA4C4299DAFCF00DC0FD3 /* BasketTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTVCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +54,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9ADA4A2299ADAD400DC0FD3 /* FirebaseDatabaseSwift in Frameworks */,
+				D9ADA4A0299ADAD400DC0FD3 /* FirebaseDatabase in Frameworks */,
+				D9ADA49E299ADAD400DC0FD3 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +82,97 @@
 		D9ADA485299AD6D900DC0FD3 /* firebaseRealtimeDBExample */ = {
 			isa = PBXGroup;
 			children = (
-				D9ADA486299AD6D900DC0FD3 /* AppDelegate.swift */,
-				D9ADA488299AD6D900DC0FD3 /* SceneDelegate.swift */,
-				D9ADA48A299AD6D900DC0FD3 /* ViewController.swift */,
+				D9ADA4A3299AF1EC00DC0FD3 /* Application */,
+				D9ADA4AF299B7CA000DC0FD3 /* Models */,
+				D9ADA4A4299AF1FD00DC0FD3 /* Scenes */,
+				D9ADA4A5299AF21800DC0FD3 /* Common */,
 				D9ADA48C299AD6D900DC0FD3 /* Main.storyboard */,
-				D9ADA48F299AD6DC00DC0FD3 /* Assets.xcassets */,
 				D9ADA491299AD6DC00DC0FD3 /* LaunchScreen.storyboard */,
 				D9ADA494299AD6DC00DC0FD3 /* Info.plist */,
+				D9ADA49A299AD9C200DC0FD3 /* GoogleService-Info.plist */,
 			);
 			path = firebaseRealtimeDBExample;
+			sourceTree = "<group>";
+		};
+		D9ADA4A3299AF1EC00DC0FD3 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				D9ADA486299AD6D900DC0FD3 /* AppDelegate.swift */,
+				D9ADA488299AD6D900DC0FD3 /* SceneDelegate.swift */,
+				D9ADA48F299AD6DC00DC0FD3 /* Assets.xcassets */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		D9ADA4A4299AF1FD00DC0FD3 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D9ADA4A7299AF23700DC0FD3 /* ProductList */,
+				D9ADA4A8299AF24400DC0FD3 /* ProductDetail */,
+				D9ADA4A9299AF24E00DC0FD3 /* Basket */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		D9ADA4A5299AF21800DC0FD3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D9ADA4BF299BEF4400DC0FD3 /* Navigator.swift */,
+				D99C37EB299ECE3A00CC7544 /* UIImageViewExtension.swift */,
+				D99C37ED29A19A6900CC7544 /* EmptyView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D9ADA4A7299AF23700DC0FD3 /* ProductList */ = {
+			isa = PBXGroup;
+			children = (
+				D9ADA48A299AD6D900DC0FD3 /* ProductListVC.swift */,
+				D9ADA4B2299B7CCF00DC0FD3 /* ProductListViewModel.swift */,
+				D9ADA4BC299B7D1400DC0FD3 /* Cell */,
+			);
+			path = ProductList;
+			sourceTree = "<group>";
+		};
+		D9ADA4A8299AF24400DC0FD3 /* ProductDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D9ADA4B4299B7CDD00DC0FD3 /* ProductDetailVC.swift */,
+			);
+			path = ProductDetail;
+			sourceTree = "<group>";
+		};
+		D9ADA4A9299AF24E00DC0FD3 /* Basket */ = {
+			isa = PBXGroup;
+			children = (
+				D9ADA4B8299B7CF700DC0FD3 /* BasketVC.swift */,
+				D9ADA4C3299DAFB100DC0FD3 /* Cell */,
+			);
+			path = Basket;
+			sourceTree = "<group>";
+		};
+		D9ADA4AF299B7CA000DC0FD3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D9ADA4BD299BCAFB00DC0FD3 /* ProductModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D9ADA4BC299B7D1400DC0FD3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D9ADA4C1299D15AB00DC0FD3 /* ProductListCVCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D9ADA4C3299DAFB100DC0FD3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D9ADA4C4299DAFCF00DC0FD3 /* BasketTVCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +191,11 @@
 			dependencies = (
 			);
 			name = firebaseRealtimeDBExample;
+			packageProductDependencies = (
+				D9ADA49D299ADAD400DC0FD3 /* FirebaseAnalytics */,
+				D9ADA49F299ADAD400DC0FD3 /* FirebaseDatabase */,
+				D9ADA4A1299ADAD400DC0FD3 /* FirebaseDatabaseSwift */,
+			);
 			productName = firebaseRealtimeDBExample;
 			productReference = D9ADA483299AD6D900DC0FD3 /* firebaseRealtimeDBExample.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +224,9 @@
 				Base,
 			);
 			mainGroup = D9ADA47A299AD6D900DC0FD3;
+			packageReferences = (
+				D9ADA49C299ADAD400DC0FD3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = D9ADA484299AD6D900DC0FD3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9ADA493299AD6DC00DC0FD3 /* LaunchScreen.storyboard in Resources */,
+				D9ADA49B299AD9C200DC0FD3 /* GoogleService-Info.plist in Resources */,
 				D9ADA490299AD6DC00DC0FD3 /* Assets.xcassets in Resources */,
 				D9ADA48E299AD6D900DC0FD3 /* Main.storyboard in Resources */,
 			);
@@ -138,9 +255,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9ADA48B299AD6D900DC0FD3 /* ViewController.swift in Sources */,
+				D9ADA4B5299B7CDD00DC0FD3 /* ProductDetailVC.swift in Sources */,
+				D9ADA4C5299DAFCF00DC0FD3 /* BasketTVCell.swift in Sources */,
+				D9ADA4B3299B7CCF00DC0FD3 /* ProductListViewModel.swift in Sources */,
+				D9ADA4C0299BEF4400DC0FD3 /* Navigator.swift in Sources */,
+				D99C37EE29A19A6900CC7544 /* EmptyView.swift in Sources */,
+				D9ADA4B9299B7CF700DC0FD3 /* BasketVC.swift in Sources */,
+				D9ADA48B299AD6D900DC0FD3 /* ProductListVC.swift in Sources */,
 				D9ADA487299AD6D900DC0FD3 /* AppDelegate.swift in Sources */,
 				D9ADA489299AD6D900DC0FD3 /* SceneDelegate.swift in Sources */,
+				D9ADA4C2299D15AB00DC0FD3 /* ProductListCVCell.swift in Sources */,
+				D99C37EC299ECE3A00CC7544 /* UIImageViewExtension.swift in Sources */,
+				D9ADA4BE299BCAFB00DC0FD3 /* ProductModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +484,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D9ADA49C299ADAD400DC0FD3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D9ADA49D299ADAD400DC0FD3 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D9ADA49C299ADAD400DC0FD3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		D9ADA49F299ADAD400DC0FD3 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D9ADA49C299ADAD400DC0FD3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		D9ADA4A1299ADAD400DC0FD3 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D9ADA49C299ADAD400DC0FD3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D9ADA47B299AD6D900DC0FD3 /* Project object */;
 }
