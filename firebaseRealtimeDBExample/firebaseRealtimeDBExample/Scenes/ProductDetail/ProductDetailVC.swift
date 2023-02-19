@@ -31,6 +31,7 @@ class ProductDetailVC: UIViewController {
     override func viewDidLoad() {
         navigator.navController = navigationController!
         setupView()
+        addGesture()
     }
     
     @objc func addToBasketButtonTapped(_ sender: UIButton) {
@@ -40,6 +41,18 @@ class ProductDetailVC: UIViewController {
         UserDefaults.standard.set(addedProducts, forKey: "basket")
         let basketVC = BasketVC()
         navigator.navigateTo(basketVC, animated: true)
+    }
+    
+    @objc func didPinch(_ gesture: UIPinchGestureRecognizer) {
+        if gesture.state == .changed {
+            scrollView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+            scrollView.center = view.center
+        }
+    }
+    
+    func addGesture() {
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(didPinch))
+        scrollView.addGestureRecognizer(pinchGesture)
     }
     
     func setupView() {
